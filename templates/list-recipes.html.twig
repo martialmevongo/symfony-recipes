@@ -1,26 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recettes</title>
+</head>
+<body>
+
+	<h1>Toutes les recettes: </h1>
 
 
-<link rel="stylesheet" href="{{ asset('css/recipes.css') }}">
-<main>
-<div class="recipes-container">
-    {% for recipe in recipes %}
-        <div class="recipe-card">
-            <img src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}" class="recipe-image">
-            <div class="recipe-content">
-                <div class="recipe-category">{{ recipe.category }}</div>
-                <h2 class="recipe-title">{{ recipe.title }}</h2>
-                <p class="recipe-description">{{ recipe.description }}</p>
-                <ul class="recipe-ingredients">
-                    {% for ingredient in recipe.ingredients %}
-                        <li>{{ ingredient }}</li>
-                    {% endfor %}
-                </ul>
-                <div class="recipe-date">Créé le {{ recipe.createdAt|date('d/m/Y H:i') }}</div>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-</main>
-                
+	{% for recipe in recipes %}
 
+		<article>
 
+			<h2>{{recipe.title}}</h2>
+			<p>{{recipe.description}} </p>
+			<img src="{{recipe.image}}" alt="{{recipe.title}}" />
+			<p>{{recipe.category}}</p>
+			<p>Publié le : {{recipe.createdAt}}</p>
+
+			<p>Ingrédients :</p>
+
+			<ul>
+
+				{% for ingredient in recipe.ingredients %}
+
+					<li>{{ingredient}}</li>
+
+				{% endfor %}
+
+			</ul>
+
+		</article>
+
+	{% endfor %}
+
+</body>
+</html>

@@ -1,1 +1,38 @@
-<p>Hello Page d'acceuil</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recettes</title>
+</head>
+<body>
+
+	<h1>Les trois dernières recettes</h1>
+
+
+	{% for recipe in recipes %}
+
+		<article>
+
+			<h2>{{recipe.title}}</h2>
+			<p>{{recipe.description}} </p>
+			<img src="{{recipe.image}}" alt="{{recipe.title}}" />
+			<p>{{recipe.category}}</p>
+			<p>Publié le : {{recipe.createdAt}}</p>
+
+			<p>Ingrédients :</p>
+
+			<ul>
+
+				{% for ingredient in recipe.ingredients %}
+
+					<li>{{ingredient}}</li>
+
+				{% endfor %}
+
+			</ul>
+
+		</article>
+
+	{% endfor %}
+
+</body>
+</html>
