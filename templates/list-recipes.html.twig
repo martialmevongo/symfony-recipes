@@ -1,0 +1,26 @@
+
+
+<link rel="stylesheet" href="{{ asset('css/recipes.css') }}">
+<main>
+<div class="recipes-container">
+    {% for recipe in recipes %}
+        <div class="recipe-card">
+            <img src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}" class="recipe-image">
+            <div class="recipe-content">
+                <div class="recipe-category">{{ recipe.category }}</div>
+                <h2 class="recipe-title">{{ recipe.title }}</h2>
+                <p class="recipe-description">{{ recipe.description }}</p>
+                <ul class="recipe-ingredients">
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="recipe-date">Créé le {{ recipe.createdAt|date('d/m/Y H:i') }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</main>
+                
+
+
